@@ -158,6 +158,25 @@ class OgreR(EnemyRoom):
             """
 
 
+# TODO : Add a room with a Goblin in it.
+# TODO : Add that room to the map.
+class GoblinR(EnemyRoom):
+    def __init__(self, x, y):
+        super().__init__(x, y, enemies.Goblin())
+
+    def intro_text(self):
+        if self.enemy.is_alive():
+            return """
+            ??????
+            """
+        else:
+            return """
+            ??????
+            """
+
+# TODO : Add Cave Trolls to the map
+
+
 class SnakeR(MapTile):
     def intro_text(self):
         return """
