@@ -20,14 +20,17 @@ def load_tiles():
     """Parses a file that describes the world space into the _world object"""
     with open('resources/map.txt', 'r') as f:
         rows = f.readlines()
+
     x_max = len(rows[0].split('\t'))  # Splitting up the map with Tabs
     for y in range(len(rows)):
         cols = rows[y].split('\t')  # Splitting up the map with Tabs
         for x in range(x_max):
             tile_name = cols[x].replace('\n', '')  # stripping off newlines
+
             if tile_name == 'Start':  # record the Start position
                 global starting_position
                 starting_position = (x, y)
+
             if tile_name == '':
                 _world[(x, y)] = None  # If no room mark the map space blank
             else:
