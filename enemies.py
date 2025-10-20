@@ -31,7 +31,8 @@ class Ogre(Enemy):
         super().__init__(name="Ogre", hp=30, damage=15)
 
 
-class Goblin(Enemy):  # TODO : Goblins are small
+# TODO : Make Goblin work. Goblins are small
+class Goblin(Enemy):  
     def __init__(self):
         # super().__init__(name="", hp=, damage=)
         pass
