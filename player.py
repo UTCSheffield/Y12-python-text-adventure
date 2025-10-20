@@ -9,30 +9,32 @@ __author__ = 'Mr Eggleton'
 
 class Player():
     def __init__(self):
-        self.inventory = [items.Gold(15), items.Rock()]
-        self.hp = 100
-        self.location_x, self.location_y = world.starting_position
-        self.victory = False
+        self.inventory = [items.Gold(15), items.Rock()]  # What the player has
+        self.hp = 100  # Health Points
+        self.location_x, self.location_y = world.starting_position  # From map
+        self.victory = False  # Has the Player Won yet?
 
     def is_alive(self):
-        return self.hp > 0
+        return self.hp > 0  # Has the player got more than 0 health points?
 
-    def do_action(self, action, **kwargs):
-        action_method = getattr(self, action.method.__name__)
+    def do_action(self, action, **kwargs):  # kwargs = Keyword Arguments
+        # This is Python magic, Functions and Methods are also variables
+        action_method = getattr(self, action.method.__name__)  # Get the method
         if action_method:
-            action_method(**kwargs)
+            action_method(**kwargs)  # Do the method with the arguments given
 
     def print_inventory(self):
-        for item in self.inventory:
-            print(item, '\n')
+        for item in self.inventory:  # Loop around everything the player has
+            print(item, '\n')  # Print the __str__() for the inventory item
 
-    def move(self, dx, dy):
-        self.location_x += dx
-        self.location_y += dy
+    def move(self, dx, dy):  # Move to  the next tile / room
+        self.location_x += dx  # Add horizontal movement
+        self.location_y += dy  # Add vertical movement
+        # Print the intro text for this new room
         print(world.get_tile(self.location_x, self.location_y).intro_text())
 
-    def move_north(self):
-        self.move(dx=0, dy=-1)
+    def move_north(self):  # Move North
+        self.move(dx=0, dy=-1)  # One less in the y axis (0 is the top)
 
     def move_south(self):
         self.move(dx=0, dy=1)
