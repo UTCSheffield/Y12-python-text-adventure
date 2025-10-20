@@ -1,5 +1,7 @@
 """Defines the enemies in the game"""
 __author__ = 'Phillip Johnson'
+__author__ = 'Mr Eggleton'
+# __author__ = ''
 
 
 class Enemy:
@@ -27,3 +29,11 @@ class GiantSpider(Enemy):
 class Ogre(Enemy):
     def __init__(self):
         super().__init__(name="Ogre", hp=30, damage=15)
+
+
+class Goblin(Enemy):  # TODO : Goblins are small
+    def __init__(self):
+        # super().__init__(name="", hp=, damage=)
+        pass
+
+# TODO : Cave Trolls are huge
