@@ -1,7 +1,10 @@
 import random
-import items, world
+import items
+import world
 
 __author__ = 'Phillip Johnson'
+__author__ = 'Mr Eggleton'
+# __author__ = ''
 
 
 class Player():
@@ -26,7 +29,7 @@ class Player():
     def move(self, dx, dy):
         self.location_x += dx
         self.location_y += dy
-        print(world.tile_exists(self.location_x, self.location_y).intro_text())
+        print(world.get_tile(self.location_x, self.location_y).intro_text())
 
     def move_north(self):
         self.move(dx=0, dy=-1)
@@ -61,4 +64,3 @@ class Player():
         available_moves = tile.adjacent_moves()
         r = random.randint(0, len(available_moves) - 1)
         self.do_action(available_moves[r])
-

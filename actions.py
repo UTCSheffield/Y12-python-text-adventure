@@ -1,5 +1,7 @@
 """Describes the actions a player can make in the game"""
 __author__ = 'Phillip Johnson'
+__author__ = 'Mr Eggleton'
+# __author__ = ''
 
 from player import Player
 
@@ -11,8 +13,8 @@ class Action():
 
         :param method: the function object to execute
         :param name: the name of the action
-        :param ends_turn: True if the player is expected to move after this action else False
-        :param hotkey: The keyboard key the player should use to initiate this action
+        :param ends_turn: Is the player expected to move after this action
+        :param hotkey: The keyboard key the player inputs for this action
         """
         self.method = method
         self.hotkey = hotkey
@@ -25,12 +27,16 @@ class Action():
 
 class MoveNorth(Action):
     def __init__(self):
-        super().__init__(method=Player.move_north, name='Move north', hotkey='n')
+        super().__init__(  # Run Action.__init__
+            method=Player.move_north,
+            name='Move north',
+            hotkey='n')
 
 
 class MoveSouth(Action):
     def __init__(self):
-        super().__init__(method=Player.move_south, name='Move south', hotkey='s')
+        super().__init__(method=Player.move_south,
+                         name='Move south', hotkey='s')
 
 
 class MoveEast(Action):
@@ -46,14 +52,17 @@ class MoveWest(Action):
 class ViewInventory(Action):
     """Prints the player's inventory"""
     def __init__(self):
-        super().__init__(method=Player.print_inventory, name='View inventory', hotkey='i')
+        super().__init__(method=Player.print_inventory,
+                         name='View inventory', hotkey='i')
 
 
 class Attack(Action):
     def __init__(self, enemy):
-        super().__init__(method=Player.attack, name="Attack", hotkey='a', enemy=enemy)
+        super().__init__(method=Player.attack,
+                         name="Attack", hotkey='a', enemy=enemy)
 
 
 class Flee(Action):
     def __init__(self, tile):
-        super().__init__(method=Player.flee, name="Flee", hotkey='f', tile=tile)
+        super().__init__(method=Player.flee,
+                         name="Flee", hotkey='f', tile=tile)
