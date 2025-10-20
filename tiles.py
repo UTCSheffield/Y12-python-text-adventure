@@ -1,13 +1,18 @@
 """Describes the tiles in the world space."""
 __author__ = 'Phillip Johnson'
+__author__ = 'Mr Eggleton'
+# __author__ = ''
 
-import items, enemies, actions, world
+import items
+import enemies
+import actions
+import world
 
 
 class MapTile:
     """The base class for a tile within the world space"""
     def __init__(self, x, y):
-        """Creates a new tile.
+        """Creates a new tile with an (x, y) location.
 
         :param x: the x-coordinate of the tile
         :param y: the y-coordinate of the tile
@@ -26,13 +31,13 @@ class MapTile:
     def adjacent_moves(self):
         """Returns all move actions for adjacent tiles."""
         moves = []
-        if world.tile_exists(self.x + 1, self.y):
+        if world.get_tile(self.x + 1, self.y):
             moves.append(actions.MoveEast())
-        if world.tile_exists(self.x - 1, self.y):
+        if world.get_tile(self.x - 1, self.y):
             moves.append(actions.MoveWest())
-        if world.tile_exists(self.x, self.y - 1):
+        if world.get_tile(self.x, self.y - 1):
             moves.append(actions.MoveNorth())
-        if world.tile_exists(self.x, self.y + 1):
+        if world.get_tile(self.x, self.y + 1):
             moves.append(actions.MoveSouth())
         return moves
 
@@ -44,7 +49,11 @@ class MapTile:
         return moves
 
 
-class StartingRoom(MapTile):
+# All the Tiles that appear on the map need Class names less than 8 characters
+
+# The Start Class is a SubClass of the MapTile
+# The Start Tile is the starting point on the map
+class Start(MapTile):
     def intro_text(self):
         return """
         You find yourself in a cave with a flickering torch on the wall.
@@ -52,18 +61,18 @@ class StartingRoom(MapTile):
         """
 
     def modify_player(self, the_player):
-        #Room has no action on player
+        # Room has no action on player
         pass
 
 
-class EmptyCavePath(MapTile):
+class Cave(MapTile):
     def intro_text(self):
         return """
         Another unremarkable part of the cave. You must forge onwards.
         """
 
     def modify_player(self, the_player):
-        #Room has no action on player
+        # Room has no action on player
         pass
 
 
@@ -80,7 +89,7 @@ class LootRoom(MapTile):
         self.add_loot(the_player)
 
 
-class FindDaggerRoom(LootRoom):
+class DaggerR(LootRoom):  # Dagger Room
     def __init__(self, x, y):
         super().__init__(x, y, items.Dagger())
 
@@ -91,7 +100,7 @@ class FindDaggerRoom(LootRoom):
         """
 
 
-class Find5GoldRoom(LootRoom):
+class Find5G(LootRoom):
     def __init__(self, x, y):
         super().__init__(x, y, items.Gold(5))
 
@@ -109,7 +118,8 @@ class EnemyRoom(MapTile):
     def modify_player(self, the_player):
         if self.enemy.is_alive():
             the_player.hp = the_player.hp - self.enemy.damage
-            print("Enemy does {} damage. You have {} HP remaining.".format(self.enemy.damage, the_player.hp))
+            print("Enemy does {} damage. You have {} HP remaining."
+                  .format(self.enemy.damage, the_player.hp))
 
     def available_actions(self):
         if self.enemy.is_alive():
@@ -118,7 +128,7 @@ class EnemyRoom(MapTile):
             return self.adjacent_moves()
 
 
-class GiantSpiderRoom(EnemyRoom):
+class SpiderR(EnemyRoom):
     def __init__(self, x, y):
         super().__init__(x, y, enemies.GiantSpider())
 
@@ -133,7 +143,7 @@ class GiantSpiderRoom(EnemyRoom):
             """
 
 
-class OgreRoom(EnemyRoom):
+class OgreR(EnemyRoom):
     def __init__(self, x, y):
         super().__init__(x, y, enemies.Ogre())
 
@@ -148,7 +158,7 @@ class OgreRoom(EnemyRoom):
             """
 
 
-class SnakePitRoom(MapTile):
+class SnakeR(MapTile):
     def intro_text(self):
         return """
         You have fallen into a pit of deadly snakes!
@@ -160,7 +170,7 @@ class SnakePitRoom(MapTile):
         player.hp = 0
 
 
-class LeaveCaveRoom(MapTile):
+class Win(MapTile):
     def intro_text(self):
         return """
         You see a bright light in the distance...

@@ -1,8 +1,8 @@
-			LeaveCaveRoom	
-	Find5GoldRoom	EmptyCavePath	GiantSpiderRoom	EmptyCavePath
-		EmptyCavePath		
-		EmptyCavePath		
-GiantSpiderRoom	EmptyCavePath	StartingRoom	EmptyCavePath	FindDaggerRoom
-		Find5GoldRoom		
-		EmptyCavePath	OgreRoom	Find5GoldRoom		
-		SnakePitRoom		
+			Win	
+	Find5G	Cave	SpiderR	Cave
+		Cave		
+		Cave		
+SpiderR	Cave	Start	Cave	DaggerR
+		Find5G		
+		Cave	OgreR	Find5G		
+		SnakeR		
