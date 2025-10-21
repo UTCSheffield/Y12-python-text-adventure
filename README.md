@@ -7,12 +7,13 @@
     * Press CTRL+P  and ">Change Tab Display Size" Choose 8. 
     Now the map lines up
     * Add another room where you can find a dagger by typing DaggerR in a blank bit. Try it.
-    * Add another room.
+    * Add another room to the map (the rooms are defined in "tiles.py").
 * **Read the code**
     * Start with "game.py", can you think of a way of breaking the game.
     * In "enemies.py" can you see how all the different enemies are based on the Enemy class
     * In "tiles.py" can you see how all the Types of room are based on the MapTile class
     * How does python show that a Class is built on (a sub class of) another class?
+    * You can sub-class a sub-class. Can you find an example of that in "items.py"
 * **Option 1**
     * Make Goblins work. Goblins are small (in enemies.py)
     * Cave Trolls are huge (in enemies.py)
