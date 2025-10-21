@@ -21,10 +21,13 @@
 * **Option 2**
     * Change the story completely
     * Make it into UTC OLP or anything else.
-* **Option 3 (Extreme)**
-    Add Locked Doors and Keys to Collect
+* **Option 3**
+    * Add mechanics
+    * Dark rooms and torches
+    * Locked Doors and Keys to Collect
 
-## Docs
+## Explaination of the code
+### Taken from the original tutorials
 
 Typically, a text adventure game involves the player exploring and interacting with a world to tell a story. For this tutorial, I wanted the game to take place in a cave with the goal of escaping alive. You can of course use this idea too, but feel free to use your own idea! Almost all parts of this tutorial are interchangeable with your own custom elements. We’re going to start by defining some items and enemies.
 
